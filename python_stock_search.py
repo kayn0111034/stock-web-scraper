@@ -1,38 +1,39 @@
 from selenium import webdriver
 from selenium.webdriver.common.keys import Keys
-
-# driver = webdriver.Chrome()
-# driver.get("http://www.cnbc.com/quotes")
-# assert "Python" in driver.title
-# elem = driver.find_element_by_name("q")
-# elem.clear()
-# elem.send_keys("pycon")
-# elem.send_keys(Keys.RETURN)
-# assert "No results found." not in driver.page_source
-# driver.close()
-
-
-
-#Simple assignment
 from selenium.webdriver import Chrome
+import time
 
-driver = Chrome()
-
-#Or use the context manager
-from selenium.webdriver import Chrome
 
 with Chrome() as driver:
     #your code inside this indent
 
     #gets the tsla webpage on CNBC
-    driver.get("https://www.cnbc.com/quotes/tsla")
+    stock=["ba","tsla"]
+    for i in range(len(stock)):
+        driver.get("https://www.cnbc.com/quotes/"+stock[i])
 
-    assert "TSLA" in driver.title
-
-    elements=driver.find_elements(By.classname, 'QuoteStrip-lastPriceStripContainer')
-    Close_price=elements.find_elements(By.classname, 'QuoteStrip-lastPrice')
-    
+        stock_name=driver.find_element_by_class_name('QuoteStrip-name').text
+        close_price=driver.find_element_by_class_name('QuoteStrip-lastPrice').text
 
 
+
+        close="Close:"+close_price
+        dict={
+        stock[i]:[stock_name,close]
+        }
+        # print(stock_name+":")
+        # print(close+":")
+        # print(close_price)
+        print(dict)
+    #assert "TSLA" in driver.title
+
+    #elements=driver.find_element_by_class_name('QuoteStrip-lastPriceStripContainer')
+
+    #return Close_price
+    #print(driver.title)
+    #print(dict)
+
+
+    time.sleep(5)
     #quits the driver, ends browser session
     driver.quit()
