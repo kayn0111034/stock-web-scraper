@@ -17,15 +17,21 @@ def stock_scraper(stock):
 
             #relative xpath selector because the class name was used in multiple places
             open_price=driver.find_element_by_xpath('//*[@id="MainContentContainer"]/div/div[2]/div[1]/div[5]/div[2]/section/div[1]/ul/li[1]/span[2]').text
+
+            high_price=driver.find_element_by_xpath('//*[@id="MainContentContainer"]/div/div[2]/div[1]/div[5]/div[2]/section/div[1]/ul/li[2]/span[2]').text
+
+            low_price=driver.find_element_by_xpath('//*[@id="MainContentContainer"]/div/div[2]/div[1]/div[5]/div[2]/section/div[1]/ul/li[3]/span[2]').text
             #relative xpath selector because class name was used in the whole table
             close_price=driver.find_element_by_xpath('//*[@id="MainContentContainer"]/div/div[2]/div[1]/div[2]/div[4]/div[1]/div[2]/span[1]').text
 
 
-            open="Open:"+open_price
-            close="Close:"+close_price
+            open="Open: "+open_price
+            high="High: "+high_price
+            low="Low: "+low_price
+            close="Close: "+close_price
 
             dict={
-            stock[i]:[stock_name,open,close]
+            stock[i]:[stock_name,open,high,low,close]
             }
             # print(stock_name+":")
             # print(close+":")
@@ -38,6 +44,6 @@ def stock_scraper(stock):
         #print(dict)
 
 
-        time.sleep(5)
+        #time.sleep(5)
         #quits the driver, ends browser session
         driver.quit()
