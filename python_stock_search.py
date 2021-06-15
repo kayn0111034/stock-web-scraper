@@ -22,7 +22,7 @@ def stock_scraper(stock):
 
             low_price=driver.find_element_by_xpath('//*[@id="MainContentContainer"]/div/div[2]/div[1]/div[5]/div[2]/section/div[1]/ul/li[3]/span[2]').text
             #relative xpath selector because class name was used in the whole table
-            close_price=driver.find_element_by_xpath('//*[@id="MainContentContainer"]/div/div[2]/div[1]/div[2]/div[4]/div[1]/div[2]/span[1]').text
+            close_price=driver.find_element_by_xpath('//*[@id="MainContentContainer"]/div/div[2]/div[1]/div[5]/div[2]/section/div[1]/ul/li[4]/span[2]').text
 
 
             open="Open: "+open_price
