@@ -36,7 +36,7 @@ def stock_scraper(stock):
             # print(stock_name+":")
             # print(close+":")
             # print(close_price)
-            return dict
+            print(dict)
         #assert "TSLA" in driver.title
 
         #return Close_price
